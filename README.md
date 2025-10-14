@@ -4,7 +4,7 @@
   </a>
 </div>
 
-<h3 align="center">NestJS Logger Module with Cls</h3>
+<h3 align="center">NestJS Logger Module with Cls suitable for Winston-Graylog transport</h3>
 
 <div align="center">
   <a href="https://nestjs.com" target="_blank">
@@ -12,22 +12,18 @@
   </a>
 </div>
 
-### Введение
-
-Модуль логгера с поддержкой CLS
-
-### Установка
+### Installation
 
 ```bash
-npm install --save nestjs-fox-logger
+npm install --save nestjs-fox-logger nest-cls
 ```
 
-### Использование
+### Usage
 
-#### Импорт
+#### Import
 
 ```ts
-// В корневом модуле
+// In your root module
 import { ClsModule } from 'nestjs-cls';
 
 @Module({
@@ -44,7 +40,7 @@ import { ClsModule } from 'nestjs-cls';
 })
 export class AppModule {}
 
-///... в конкретном модуле
+/// ...in a feature module
 import { FoxLoggerModule } from 'nestjs-fox-logger';
 
 @Module({
@@ -60,7 +56,7 @@ import { FoxLoggerModule } from 'nestjs-fox-logger';
 export class UsersModule {}
 ```
 
-#### Вызовы
+#### Call
 
 ```typescript
 import { LoopService } from 'nestjs-fox-logger';
