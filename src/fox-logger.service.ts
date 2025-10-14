@@ -17,8 +17,8 @@ export class FoxLoggerService extends Logger {
     this.name = options.name;
   }
 
-  /** Получение разных  */
-  private formatMsg(msg: unknown) {
+  /** Получение сообщения из разных видов данных  */
+  static FormatMsg(msg: unknown) {
     /** делаем сообщение из разных типов данных */
     switch (typeof msg) {
       case 'string':
@@ -68,21 +68,33 @@ export class FoxLoggerService extends Logger {
   }
 
   public log(msg: any, eventId?: string) {
-    return Logger.log(this.getPrefix(eventId) + `: ` + this.formatMsg(msg));
+    return Logger.log(
+      this.getPrefix(eventId) + `: ` + FoxLoggerService.FormatMsg(msg),
+    );
   }
   public warn(msg: any, eventId?: string) {
-    return Logger.warn(this.getPrefix(eventId) + `: ` + this.formatMsg(msg));
+    return Logger.warn(
+      this.getPrefix(eventId) + `: ` + FoxLoggerService.FormatMsg(msg),
+    );
   }
   public debug(msg: any, eventId?: string) {
-    return Logger.debug(this.getPrefix(eventId) + `: ` + this.formatMsg(msg));
+    return Logger.debug(
+      this.getPrefix(eventId) + `: ` + FoxLoggerService.FormatMsg(msg),
+    );
   }
   public error(msg: any, eventId?: string) {
-    return Logger.error(this.getPrefix(eventId) + `: ` + this.formatMsg(msg));
+    return Logger.error(
+      this.getPrefix(eventId) + `: ` + FoxLoggerService.FormatMsg(msg),
+    );
   }
   public verbose(msg: any, eventId?: string) {
-    return Logger.verbose(this.getPrefix(eventId) + `: ` + this.formatMsg(msg));
+    return Logger.verbose(
+      this.getPrefix(eventId) + `: ` + FoxLoggerService.FormatMsg(msg),
+    );
   }
   public fatal(msg: any, eventId?: string) {
-    return Logger.fatal(this.getPrefix(eventId) + `: ` + this.formatMsg(msg));
+    return Logger.fatal(
+      this.getPrefix(eventId) + `: ` + FoxLoggerService.FormatMsg(msg),
+    );
   }
 }
