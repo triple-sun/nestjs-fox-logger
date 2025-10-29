@@ -1,6 +1,6 @@
 {
   "name": "nestjs-fox-logger",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Модуль логгера для Nestj.js",
   "author": "Semen Kononets <sploit.strannik@gmail.com, s.d.kononets@foxford.ru>",
   "license": "MIT",
