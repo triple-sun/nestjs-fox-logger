@@ -7,14 +7,15 @@ import { FoxLoggerServiceOptions } from './fox-logger.interfaces';
 @Injectable()
 export class FoxLoggerService extends Logger {
   private readonly $name?: string;
+  private readonly cls?: ClsService;
 
   constructor(
     @Inject(FOXLOGGER_SERVICE_OPTIONS)
     readonly options: FoxLoggerServiceOptions,
-    private readonly cls?: ClsService,
   ) {
     super();
     this.$name = options.name;
+    this.cls = options.cls;
   }
 
   /**
@@ -59,7 +60,7 @@ export class FoxLoggerService extends Logger {
   private getPrefix(eventId?: string) {
     return (
       `${this.$name ? `[${this.$name}]` : ``}` +
-      `${this.cls.getId() ? `[${this.cls.getId()}]` : ''}` +
+      `${this.cls?.getId() ? `[${this.cls?.getId()}]` : ''}` +
       `${eventId ? `[${eventId}]` : ``}`
     );
   }

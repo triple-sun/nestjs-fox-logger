@@ -16,8 +16,9 @@ describe('FoxLoggerService', () => {
         ClsModule.forRoot({
           global: true,
         }),
-        FoxLoggerModule.forFeature({
-          name: 'TEST',
+        FoxLoggerModule.forFeatureAsync({
+          useFactory: (cls: ClsService) => ({ name: 'TEST', cls }),
+          inject: [ClsService],
         }),
       ],
       providers: [FoxLoggerService, ClsService],

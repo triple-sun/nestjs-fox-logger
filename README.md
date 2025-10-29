@@ -45,8 +45,12 @@ import { FoxLoggerModule } from 'nestjs-fox-logger';
 
 @Module({
   imports: [
-    LoggerModule.forFeature({
-      name: UsersModule.name,
+    LoggerModule.forFeatureAsync({
+      useFactory: (cls: ClsService) => ({
+        cls,
+        name: UsersModule.name,
+      })
+      inject: [ClsService]
     }),
   ],
   controllers: [],

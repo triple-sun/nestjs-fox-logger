@@ -1,7 +1,9 @@
 import { ModuleMetadata, Provider, Type } from '@nestjs/common';
+import { ClsService } from 'nestjs-cls';
 
 export interface FoxLoggerServiceOptions {
   name?: string;
+  cls?: ClsService;
   timestamp?: boolean;
 }
 
