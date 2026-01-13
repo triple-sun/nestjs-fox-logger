@@ -39,14 +39,33 @@ import { ClsModule } from 'nestjs-cls';
   ],
 })
 export class AppModule {}
+```
 
-/// ...in a feature module
+```ts
+/// ...in a feature module (with cls)
+import { FoxLoggerModule } from 'nestjs-fox-logger';
+
+@Module({
+  imports: [
+    FoxLoggerModule.forFeature({
+      name: 'SomeName',
+    }),
+  ],
+  controllers: [],
+  providers: [],
+  exports: [],
+})
+export class SomeModule {}
+```
+
+```ts
+// ...in a feature module (with cls)
 import { FoxLoggerModule } from 'nestjs-fox-logger';
 
 @Module({
   imports: [
     FoxLoggerModule.forFeatureAsync({
-      useFactory: (cls: ClsService) => ({ name: UserModule.name, cls }),
+      useFactory: (cls: ClsService) => ({ name: 'SomeName', cls }),
       inject: [ClsService],
     }),
   ],
@@ -54,10 +73,28 @@ import { FoxLoggerModule } from 'nestjs-fox-logger';
   providers: [],
   exports: [],
 })
-export class UsersModule {}
+export class SomeModule {}
 ```
 
 #### Call
+
+#### Regular
+
+```typescript
+import { LoopService } from 'nestjs-fox-logger';
+
+@Injectable()
+export class YourService {
+  constructor(private readonly logger: FoxLoggerService) {}
+
+  async foo() {
+    await this.logger.log('someMessage');
+    await this.logger.log('someMessage');
+  }
+}
+```
+
+##### With Event ID
 
 ```typescript
 import { LoopService } from 'nestjs-fox-logger';
